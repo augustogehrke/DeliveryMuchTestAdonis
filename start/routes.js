@@ -2,4 +2,4 @@
 
 const Route = use('Route')
 
-Route.get('/recipes', 'RecipeController.index')
+Route.get('/recipes', 'RecipeController.index').validator('Ingredient')
