@@ -17,6 +17,7 @@ const providers = [
   '@adonisjs/bodyparser/providers/BodyParserProvider',
   '@adonisjs/cors/providers/CorsProvider',
   '@adonisjs/validator/providers/ValidatorProvider',
+  '@adonisjs/vow/providers/VowProvider',
   path.join(__dirname, '..', 'providers', 'RecipePuppyApi/provider'),
   path.join(__dirname, '..', 'providers', 'GiphyApi/provider')
 ]
