@@ -16,4 +16,3 @@ test('API Giply online', async ({ assert }) => {
   assert.isArray(data)
   assert.isNotEmpty(data)
 }).timeout(5000)
-
