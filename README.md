@@ -1,28 +1,123 @@
-# Adonis API application
+### START DO PROJETO 
 
-This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
-
-1. Bodyparser
-2. Authentication
-3. CORS
-4. Lucid ORM
-5. Migrations and seeds
-
-## Setup
-
-Use the adonis command to install the blueprint
-
-```bash
-adonis new yardstick --api-only
+**clonar o projeto**
+```sh 
+git clone git@github.com:augustogehrke/DeliveryMuchTest.git AugustoGehrke-Test
 ```
 
-or manually clone the repo and then run `npm install`.
+**Instalar a cli do adonis**
+```sh 
+npm i -g @adonisjs/cli
+```
+
+**Instalar as dependências do projeto**
+```sh 
+npm install
+```
+
+**Criar o arquivo das variáveis de ambiente**
+```sh
+cp .env.example .env
+```
+
+**Observações:**
+- O arquivo `.env` pode ser criado manualmente;
+- Necessário preencher o arquivo `.env` criado anteriormente com todas as variáveis de ambiente, conforme definidas no arquivo `.env.example`
+
+**Criar a chave única do projeto**
+```sh
+adonis key:generate
+```
+
+**Iniciar o servidor em modo de desenvolvimento**
+```sh 
+adonis serve --dev
+```
+
+O projeto iniciará localmente na porta 3333
+
+Caso necessário, a porta pode ser trocada no arquivo `.env`
+
+### PADRÃO DE DESENVOLVIMENTO
+
+O projeto faz uso do eslint, seguindo o padrão [Standard](https://standardjs.com/).
+
+**Comando úteis:**
+
+```sh
+npm run lint
+```
+Verifica se todo o projeto está seguindo o padrão definido, caso não, informa quais os problemas encontrados.
+
+```sh 
+npm run lint-fix
+```
+Verifica se todo o projeto está seguindo o padrão definido, caso não, realiza a correção automática do que for possível e informa quais problemas ainda precisam ser resolvidos.
 
 
-### Migrations
+### REQUISIÇÃO
 
-Run the following command to run startup migrations.
+Informações necessárias no cabeçalho das requisições para padronização das requisições e respostas em formato JSON.
 
-```js
-adonis migration:run
+* **Content-Type**: application/json
+* **Accept**: application/json
+
+### ROTAS
+
+**[GET] /recipes**: Busca de receitas conforme os ingredientes fornecidos.
+
+* i - String - ingredientes para realizar 
+
+**Request:**
+```
+{
+  i: onions,garlic
+}
+```
+
+**Response:**
+```
+{
+  "keywords": [
+    "onions",
+    "garlic"
+  ],
+  "recipes": [
+    {
+      "title": "Steamed Mussels I",
+      "ingredients": [
+        "garlic",
+        "mussels",
+        "onions"
+      ],
+      "link": "http://allrecipes.com/Recipe/Steamed-Mussels-I/Detail.aspx",
+      "gif": "https://media2.giphy.com/media/3otPosCSQAWOUCZ7J6/giphy.gif?cid=c0fb8eaa173d53247aa0ed5f79be9eaf26ffd2783e83df32&rid=giphy.gif"
+    },
+    {
+      "title": "Braised Beef and Onions",
+      "ingredients": [
+        "allspice",
+        "garlic",
+        "onions"
+      ],
+      "link": "http://www.epicurious.com/recipes/food/views/Braised-Beef-and-Onions-232969",
+      "gif": "https://media2.giphy.com/media/l2JhBOWhKWH7n4c6I/giphy.gif?cid=c0fb8eaa41ae92890ee50bb3cc257f58cdc9834f6399c230&rid=giphy.gif"
+    }
+  ]
+}
+```
+
+### PADRÃO DE ERROS
+
+Caso algo não ocorra como o esperado, existe retorno padrão da api.
+
+Exemplo:
+```
+{
+  "error": {
+    "message": "Please enter an ingredient",
+    "name": "IncorretParams",
+    "status": 400
+  }
+}
 ```
