@@ -121,3 +121,40 @@ Exemplo:
   }
 }
 ```
+
+### TESTES UNITÁRIOS
+
+O projeto possui testes unitários. Para sua execução é necessário alguns passos.
+
+**Criar o arquivo `.env.testing` responsável pelas variáveis dos testes**
+```sh
+cp .env.testing.example .env.testing
+```
+
+**Observações:**
+- O arquivo `.env.testing` pode ser criado manualmente;
+- Necessário preencher o arquivo `.env.testing` criado anteriormente com todas as variáveis de ambiente, conforme definidas no arquivo `.env.testing.example`
+- As variáveis de testes (`.env.testing`) são mescladas juntos no `.env`.
+
+**Execução dos testes**
+
+```sh
+adonis test
+```
+Executa todos os testes do projeto
+
+```sh
+adonis test -f providers.spec.js
+```
+Executa apenas um arquivo de testes específico
+
+**Testes implementados**
+
+**test/unit/providers**
+* Verificação se a API Recipe Puppy está online
+* Verificação se a API Giphy está online
+
+**test/unit/recipes**
+* Verifica se a função getGif está retornando um link de um gif
+* Verifica se a função formatIngredients está formatando corretamente em array os ingredientes recebidos
+* Verifica se a rota recipes [GET] está retornando a estrutura conforme solicitado
