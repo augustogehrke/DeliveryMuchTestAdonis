@@ -5,16 +5,16 @@ const GiphyApi = use('Services/GiphyApi')
 
 class RecipeController {
   async index ({ request }) {
-    const ingredients = request.input('i')
-    const recipes = await this.getRecipes(ingredients)
+    const params = request.only(['i'])
+    const recipes = await this.getRecipes(params)
     return recipes
   }
 
   async getRecipes (params) {
-    const { results } = await RecipePuppyApi.getRecipes(params)
+    const { results } = await RecipePuppyApi.getRecipes(params.i)
     const recipes = await this.formatRecipes(results)
 
-    const keywords = params.split(',')
+    const keywords = params.i.split(',')
     return { keywords, recipes }
   }
 
