@@ -169,17 +169,12 @@ Executa apenas um arquivo de testes específico
 
 Altere no arquivo `.env` a variável `HOST` para `0.0.0.0`, tornando assim a api acessível externamente
 
-**Comandos:** 
+**Comando para subir a api:** 
 
 ```sh
-docker build -t api-augustogehrke-image .
+docker-compose up --build -d
 ```
 
-Será criado uma imagem conforme as instruções fornecidas no Dockerfile
+Será criado um container com a api rodando na porta 3333 e outro container rodando o nginx para realizar o proxy reverso. Sendo assim a api pode ser consumida localmente na porta padrão.
 
-
-```sh
-docker run --name api-augustogehrke -p 49160:3333 -d api-augustogehrke-image
-```
-
-Será criado o container com a api rodando na porta 49160, portanto a url base para executar uma requisição será http://127.0.0.1:49160
+Exemplo de chamada com a api subida via container: http://127.0.0.1/recipes?i=onions,garlic
