@@ -39,6 +39,8 @@ O projeto iniciará localmente na porta 3333
 
 Caso necessário, a porta pode ser trocada no arquivo `.env`
 
+**Para subir a api em um container, verifique a sessão Usando Docker**
+
 ### PADRÃO DE DESENVOLVIMENTO
 
 O projeto faz uso do eslint, seguindo o padrão [Standard](https://standardjs.com/).
@@ -160,3 +162,24 @@ Executa apenas um arquivo de testes específico
 * Verifica se a função getGif está retornando um link de um gif
 * Verifica se a função formatIngredients está formatando corretamente em array os ingredientes recebidos
 * Verifica se a rota recipes [GET] está retornando a estrutura conforme solicitado
+
+### Usando Docker
+
+**Necessário ter instalado o Docker e do Docker Compose**
+
+Altere no arquivo `.env` a variável `HOST` para `0.0.0.0`, tornando assim a api acessível externamente
+
+**Comandos:** 
+
+```sh
+docker build -t api-augustogehrke-image .
+```
+
+Será criado uma imagem conforme as instruções fornecidas no Dockerfile
+
+
+```sh
+docker run --name api-augustogehrke -p 49160:3333 -d api-augustogehrke-image
+```
+
+Será criado o container com a api rodando na porta 49160, portanto a url base para executar uma requisição será http://127.0.0.1:49160
