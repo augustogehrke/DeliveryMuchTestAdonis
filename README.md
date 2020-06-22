@@ -22,7 +22,8 @@ cp .env.example .env
 
 **Observações:**
 - O arquivo `.env` pode ser criado manualmente;
-- Necessário preencher o arquivo `.env` criado anteriormente com todas as variáveis de ambiente, conforme definidas no arquivo `.env.example`
+- Necessário preencher o arquivo `.env` criado anteriormente com todas as variáveis de ambiente, conforme definidas no arquivo `.env.example`;
+- Foi adicionado configurações default, portanto, é necessário somente preencher a variável `API_GIPHY_KEY` com a chave da api giphy. A chave não foi fornecida devido a ser informação confidencial. Para criar a chave é necessário se registar e criar um app na [Giphy](https://developers.giphy.com/docs/api#quick-start-guide).
 
 **Criar a chave única do projeto**
 ```sh
@@ -134,7 +135,8 @@ cp .env.testing.example .env.testing
 **Observações:**
 - O arquivo `.env.testing` pode ser criado manualmente;
 - Necessário preencher o arquivo `.env.testing` criado anteriormente com todas as variáveis de ambiente, conforme definidas no arquivo `.env.testing.example`
-- As variáveis de testes (`.env.testing`) são mescladas juntos no `.env`.
+- As variáveis de testes (`.env.testing`) são mescladas juntos no `.env`;
+- Foi adicionado configurações default, portanto, é necessário somente preencher a variável `API_GIPHY_KEY` com a chave gerada anteriormente ou criar uma nova.
 
 **Execução dos testes**
 
